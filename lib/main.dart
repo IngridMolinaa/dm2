@@ -3,56 +3,74 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const PaginaInicial());
+  runApp(PaginaInical());
 }
 
-class PaginaInicial extends StatelessWidget {
-  const PaginaInicial({super.key});
+class PaginaInical extends StatelessWidget {
+  PaginaInical({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       routes: {
-        '/':(context) => Home(),
-        '/contador':(context) => Contador(),
-        '/curtir':(context) => Curtir(),
+        '/': (context) => Home(),
+        '/contador': (context) => Contador(),
+        '/curtir': (context) => Curtir(),
+        '/Cadastro': (context) => Cadastro(),
       },
     );
   }
 }
 
-class Curtir extends StatelessWidget {
-  const Curtir ({super.key});
+class Curtir extends StatefulWidget {
+  const Curtir({super.key});
 
   @override
+  State<Curtir> createState() => _CurtirState();
+}
 
+class _CurtirState extends State<Curtir> {
+  // uma variável declarada que vai controlar o estado
+  bool curtiu = false;
+  int x = 0;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Curtir"),
+        backgroundColor: Color.fromARGB(255, 219, 34, 95),
       ),
-      body: Center (
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton (
-              iconSize: 40,
-              icon: Icon(Icons.favorite_outline),
-              onPressed: () {},
-             ),
+            Text("curtiu: $x vezes"),
+            IconButton(
+              iconSize: 150,
+              icon: curtiu == true
+                  ? Icon(Icons.favorite, color: Colors.pink)
+                  : Icon(
+                      Icons.favorite_outlined,
+                      color: Colors.black,
+                    ),
+              onPressed: () {
+                setState(() {
+                  curtiu = true;
+                  x = x + 1;
+                });
+              },
+            ),
           ],
-        
-
-          ),
-       ),
+        ),
+      ),
     );
   }
-
 }
 
 class Home extends StatelessWidget {
-  const Home ({super.key});
-
-
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,33 +79,40 @@ class Home extends StatelessWidget {
         title: Text("Home"),
       ),
       body: ListView(
-        children: [ 
+        children: [
           ListTile(
-            onTap: (){
+            onTap: () {
               Navigator.pushNamed(context, '/contador');
-            
             },
-            leading: Icon(Icons.calculate, size:36 , color: Color.fromARGB(255, 57, 244, 54) ),
+            leading: Icon(Icons.calculate,
+                size: 36, color: Color.fromARGB(255, 110, 194, 50)),
             title: Text("Contador"),
             subtitle: Text("Exemplo de incremento e decremento"),
             trailing: Icon(Icons.chevron_right),
-
           ),
-
           ListTile(
-            onTap: (){
+            onTap: () {
               Navigator.pushNamed(context, '/curtir');
             },
-            leading: Icon(Icons.favorite, size: 36 , color: Color.fromARGB(255, 255, 39, 24) ),
+            leading: Icon(Icons.favorite,
+                size: 36, color: Color.fromARGB(255, 233, 53, 40)),
             title: Text("Curtir"),
             subtitle: Text("Exemplo de Curtir e Descurtir"),
             trailing: Icon(Icons.chevron_right),
-          
-          )
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.pushNamed(context, '/Cadastro');
+            },
+            leading: Icon(Icons.app_registration,
+                size: 36, color: Color.fromARGB(255, 40, 156, 233)),
+            title: Text("Cadastro"),
+            subtitle: Text("Exemplo de Cadastrar"),
+            trailing: Icon(Icons.chevron_right),
+          ),
         ],
       ),
     );
-    
   }
 }
 
@@ -100,13 +125,12 @@ class Contador extends StatefulWidget {
 
 class _ContadorState extends State<Contador> {
   int x = 100;
+
   @override
   Widget build(BuildContext context) {
-    
-    
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 106, 4, 146),
+        backgroundColor: Color.fromARGB(255, 142, 46, 159),
         title: Text("Meu Aplicativo"),
       ),
       body: Center(
@@ -116,26 +140,54 @@ class _ContadorState extends State<Contador> {
             Text(x.toString()),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 190, 59, 251),
-              ),
+                  backgroundColor: Color.fromARGB(255, 142, 46, 159)),
               onPressed: () {
                 setState(() {
-                  x = x+1;
+                  x = x + 1;
                 });
               },
-              child: Text("Aumentar"),
+              child: Text("Incrementa"),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 190, 59, 251),
-              ),
+                  backgroundColor: Color.fromARGB(255, 142, 46, 159)),
               onPressed: () {
                 setState(() {
-                  x = x-1;
+                  x = x - 1;
                 });
               },
-              child: Text("Diminuir"),
-            ),
+              child: Text("Decrementa"),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class Cadastro extends StatefulWidget {
+  const Cadastro({super.key});
+
+  @override
+  State<Cadastro> createState() => _CadastroState();
+}
+
+class _CadastroState extends State<Cadastro> {
+  int x = 100;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 142, 46, 159),
+        title: Text("Cadastro"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            
           ],
         ),
       ),
