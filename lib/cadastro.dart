@@ -16,7 +16,7 @@ class _CadastroState extends State<Cadastro> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 58, 148, 200),
+        backgroundColor: Color.fromARGB(255, 29, 189, 201),
         title: Text("Cadastro"),
       ),
       body: ListView(
@@ -25,16 +25,58 @@ class _CadastroState extends State<Cadastro> {
           TextField(
             cursorColor: Color.fromARGB(255, 69, 255, 255),
             decoration: InputDecoration(
-              icon: Icon(Icons.email, color: Color.fromARGB(255, 30, 233, 230)),
-              hintText: "Informe seu email",
+              prefixIcon:
+                  Icon(Icons.person, 
+                  color: Color.fromARGB(255, 30, 233, 230)),
+              label: Text("Informe seu Nome"),
+              border: OutlineInputBorder(),
             ),
+          ),
+          SizedBox(
+            height: 20,
           ),
           TextField(
             cursorColor: Color.fromARGB(255, 69, 255, 255),
             decoration: InputDecoration(
-              icon: Icon(Icons.lock,  color: Color.fromARGB(255, 30, 233, 230)),
-              hintText: "Informe sua senha",
+              prefixIcon:
+                  Icon(Icons.email, 
+                  color: Color.fromARGB(255, 30, 233, 230)),
+              label: Text("Informe seu E-mail"),
+              border: OutlineInputBorder(),
             ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          TextField(
+            cursorColor: Color.fromARGB(255, 69, 255, 255),
+            decoration: InputDecoration(
+              prefixIcon:
+                  Icon(Icons.lock, 
+                  color: Color.fromARGB(255, 30, 233, 230)),
+              label: Text("Informe sua Senha"),
+              border: OutlineInputBorder(),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          TextField(
+            cursorColor: Color.fromARGB(255, 69, 255, 255),
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.calendar_month,
+                  color: Color.fromARGB(255, 30, 233, 230)),
+              label: Text("Informe sua Data de Nascimento"),
+              border: OutlineInputBorder(),
+            ),
+            onTap: () {
+              showDatePicker(context: context, 
+              initialDate: DateTime.now(), 
+              firstDate: DateTime(1900,1,1), 
+              lastDate: DateTime.now(),
+
+              );
+            },
           ),
           SizedBox(
             height: 20,
@@ -42,7 +84,7 @@ class _CadastroState extends State<Cadastro> {
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromARGB(255, 49, 172, 233),
+              backgroundColor: Color.fromARGB(255, 49, 227, 233),
             ),
             child: Text("Salvar"),
           )

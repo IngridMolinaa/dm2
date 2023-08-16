@@ -36,7 +36,7 @@ class Home extends StatelessWidget {
               Navigator.pushNamed(context, '/Cadastro');
             },
             leading: Icon(Icons.app_registration,
-                size: 36, color: Color.fromARGB(255, 40, 156, 233)),
+                size: 36, color: Color.fromARGB(255, 40, 220, 233)),
             title: Text("Cadastro"),
             subtitle: Text("Exemplo de Cadastrar"),
             trailing: Icon(Icons.chevron_right),
