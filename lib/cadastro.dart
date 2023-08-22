@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
 
@@ -10,6 +10,10 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
+  var nomeController = TextEditingController();
+  var emailController = TextEditingController();
+  var senhaController = TextEditingController();
+
   int x = 100;
 
   @override
@@ -23,6 +27,7 @@ class _CadastroState extends State<Cadastro> {
         padding: EdgeInsets.all(16),
         children: [
           TextField(
+            controller: nomeController,
             cursorColor: Color.fromARGB(255, 69, 255, 255),
             decoration: InputDecoration(
               prefixIcon:
@@ -36,6 +41,7 @@ class _CadastroState extends State<Cadastro> {
             height: 20,
           ),
           TextField(
+            controller: emailController,
             cursorColor: Color.fromARGB(255, 69, 255, 255),
             decoration: InputDecoration(
               prefixIcon:
@@ -49,6 +55,7 @@ class _CadastroState extends State<Cadastro> {
             height: 20,
           ),
           TextField(
+            controller: senhaController,
             cursorColor: Color.fromARGB(255, 69, 255, 255),
             decoration: InputDecoration(
               prefixIcon:
@@ -82,7 +89,12 @@ class _CadastroState extends State<Cadastro> {
             height: 20,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              print("O botão foi clicado");
+              print(nomeController.text);
+              print(emailController.text);
+              print(senhaController.text);
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromARGB(255, 49, 227, 233),
             ),
