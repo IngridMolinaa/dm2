@@ -6,6 +6,7 @@ import 'cadastro.dart';
 import 'contador.dart';
 import 'curtir.dart';
 import 'home.dart';
+import 'login.dart';
 
 void main() {
   runApp(MeuApp());
@@ -28,6 +29,7 @@ class MeuApp extends StatelessWidget {
         '/contador': (context) => Contador(),
         '/curtir': (context) => Curtir(),
         '/Cadastro': (context) => Cadastro(),
+        '/login':(context) => login(),
       },
     );
   }
